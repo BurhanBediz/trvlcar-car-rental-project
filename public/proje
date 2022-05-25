@@ -1,0 +1,35 @@
+PROJE YOL HARİTAMIZ
+- proje kurulumu: npx create-react-app trvlcar-frontend
+- paket kurulumu: npm i alertifyjs axios bootstrap formik js-file-download moment react-bootstrap react-icons react-router-dom react-toastify swiper yup react-maskedinput  
+- klasörlerin oluşturulması: src içinde aşağıdaki klasörlerin oluşturulması
+    -assets
+        -img
+        -css
+        -data
+    -components
+        -users
+            -common
+            -home
+            -about
+            -...
+        -admins
+    -pages
+        -users
+        -admins
+    -router
+    -store
+    -templates
+    -utils
+    
+- Sayfaların oluşturulması
+    -users
+        -HomePage, AboutPage, ContactPage, VehiclesPage, VehicleDetailsPage, AuthPage
+    -admins
+    
+- Router ın oluşturulması
+- Users için genel component lerin oluşturulması
+    - Header, Footer
+    
+- Users için sayfa component lerin oluşturulması 
+    - HomePage 
+        - Banner
