@@ -4,12 +4,13 @@
     background-position: center center;
     background-size: cover;
     height: 300px;
-    position:relative;
-    display:flex;
-    justify-content:center;
+    position: relative;
+    display: flex;
+    justify-content: center;
     align-items: flex-end;
-    color:white;
+    color: white;
 }
+
 .page-header::after{
     content: "";
     position: absolute;
@@ -17,8 +18,9 @@
     background-color: var(--color2);
     opacity:0.8;
 }
+
 .page-header h1{
-    position:relative;
+    position: relative;
     z-index: 5;
     font-size: 3rem;
 }

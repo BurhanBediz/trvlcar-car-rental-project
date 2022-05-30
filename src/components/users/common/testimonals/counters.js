@@ -1,6 +1,7 @@
 import React from 'react'
 import { Card, Col, Container, Row } from 'react-bootstrap'
-import './counters.css'
+import "./counters.css";
+
 const Counters = () => {
   return (
     <Container className="counters">
@@ -17,7 +18,7 @@ const Counters = () => {
                 <Card>
                     <Card.Body>
                         <h2>6500+</h2>
-                        <p>Happy Clients</p>
+                        <p>Hapy Clients</p>
                     </Card.Body>
                 </Card>
             </Col>

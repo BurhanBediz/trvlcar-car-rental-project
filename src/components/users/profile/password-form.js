@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 import { Button, Form, Spinner } from "react-bootstrap";
-import Spacer from "../common/spacer/spacer";
 import * as Yup from "yup";
-import MaskedInput from "react-maskedinput";
 import { useFormik } from "formik";
-import { register, updatePassword } from "../../../api/user-service";
+import { updatePassword } from "../../../api/user-service";
 import { toast } from "react-toastify";
 import PasswordInput from "../common/password-input/password-input";
+
 const PasswordForm = () => {
   const [loading, setLoading] = useState(false);
+
   const initialValues = {
     oldPassword: "",
     newPassword: "",
     confirmNewPassword: "",
   };
+
   const validationSchema = Yup.object({
     oldPassword: Yup.string().required("Please enter your current password"),
     newPassword: Yup.string()
@@ -27,8 +28,10 @@ const PasswordForm = () => {
       .required("Please re-enter your new password")
       .oneOf([Yup.ref("newPassword")], "Password fields doesn't match"),
   });
+
   const onSubmit = async (values) => {
     setLoading(true);
+
     try {
       await updatePassword(values);
       toast("Your password was updated successfully");
@@ -39,11 +42,13 @@ const PasswordForm = () => {
       setLoading(false);
     }
   };
+
   const formik = useFormik({
     initialValues,
     validationSchema,
     onSubmit,
   });
+
   return (
     <Form noValidate onSubmit={formik.handleSubmit}>
       <Form.Group className="mb-3">
@@ -55,6 +60,7 @@ const PasswordForm = () => {
           error={formik.errors.oldPassword}
         />
       </Form.Group>
+
       <Form.Group className="mb-3">
         <Form.Label>New Password</Form.Label>
         <PasswordInput
@@ -64,6 +70,7 @@ const PasswordForm = () => {
           error={formik.errors.newPassword}
         />
       </Form.Group>
+
       <Form.Group className="mb-3">
         <Form.Label>Password Confirm</Form.Label>
         <PasswordInput
@@ -79,10 +86,12 @@ const PasswordForm = () => {
           error={formik.errors.confirmNewPassword}
         />
       </Form.Group>
+
       <Button variant="primary" type="submit" disabled={loading}>
         {loading && <Spinner animation="border" size="sm" />} Update
       </Button>
     </Form>
   );
 };
+
 export default PasswordForm;

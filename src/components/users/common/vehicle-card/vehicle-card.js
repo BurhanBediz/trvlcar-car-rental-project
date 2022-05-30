@@ -9,12 +9,13 @@ const VehicleCard = ({ vehicle }) => {
   const { id, image, pricePerHour, model, fuelType, airConditioning, doors, luggage } = vehicle;
   const imageSrc = `${process.env.REACT_APP_API_URL}/files/display/${image[0]}`;
   const navigate = useNavigate();
+
   return (
-    <Card className="vehicle-card" onClick={()=>navigate(`/vehicles/${id}`)}>
+    <Card className="vehicle-card" onClick={()=> navigate(`/vehicles/${id}`)}>
       <div className="image-container">
         <Card.Img variant="top" src={imageSrc} />
         <span className="price">
-          <span>${pricePerHour}</span>/day
+          <span>${pricePerHour}</span>/hour
         </span>
       </div>
 

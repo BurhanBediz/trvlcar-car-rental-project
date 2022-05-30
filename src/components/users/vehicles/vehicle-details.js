@@ -5,6 +5,7 @@ import { RiGasStationFill, RiCarLine, RiCaravanLine } from "react-icons/ri";
 import { IoIosSnow } from "react-icons/io";
 import { MdOutlineAirlineSeatReclineExtra } from "react-icons/md";
 import { GiJoystick, GiCalendarHalfYear } from "react-icons/gi";
+
 const VehicleDetails = ({ vehicle }) => {
   const {
     id,
@@ -19,8 +20,11 @@ const VehicleDetails = ({ vehicle }) => {
     transmission,
     age
   } = vehicle;
+
   console.log(vehicle);
+
   const imageSrc = `${process.env.REACT_APP_API_URL}/files/display/${image[0]}`;
+
   return (
     <Container className="vehicle-details">
       <Row className="align-items-center">
@@ -61,4 +65,5 @@ const VehicleDetails = ({ vehicle }) => {
     </Container>
   );
 };
+
 export default VehicleDetails;

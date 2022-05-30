@@ -1,4 +1,4 @@
 export const userInitialState = {
-    user : {},
-    isUserLogin : false
+    user:{},
+    isUserLogin: false
 };

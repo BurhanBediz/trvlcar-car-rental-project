@@ -1,3 +1,3 @@
 export const vehicleInitialState = {
-    vehicles : [],
+    vehicles:[]
 }

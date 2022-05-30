@@ -11,14 +11,13 @@
     font-weight: bold;
     position:absolute;
     left:0;
-    top:-5px;
+    top:-8px;
 }
 
 .whyus li{
     font-weight: 400;
     color: gray;
     position: relative;
-    padding-left:20px;
 }
 
 .whyus li span{

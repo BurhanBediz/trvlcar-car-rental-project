@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Testimonal = ({title,name,message}) => {
+const Testimonal = ({title, name, message}) => {
   return (
     <div className="testimonal">
         <p>{message}</p>

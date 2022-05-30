@@ -1,12 +1,9 @@
 .counters{
-    position:relative;
-    z-index: 5;
+    position: relative;
+    z-index:5;
 }
+
 .counters .card{
     background-color: rgba(0, 0, 0, 0.444);
-    text-align : center;
-
-}
-.swiper-pagination-bullet-active {
-    background: var(--color1) !important;
+    text-align: center;
 }

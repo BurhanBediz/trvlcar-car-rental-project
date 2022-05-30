@@ -3,30 +3,37 @@ import React, { useState } from "react";
 import { Button, Form, Spinner } from "react-bootstrap";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
+
 const ContactForm = () => {
   const [loading, setLoading] = useState(false);
+
   const initialValues = {
     fullName: "",
     email: "",
     message: "",
   };
+
   const validationSchema = Yup.object({
     fullName: Yup.string().required("Please enter your full name"),
     email: Yup.string().email().required("Please enter your email"),
     message: Yup.string().required("Please enter your message"),
   });
+
   const onSubmit = (values) => {
     setLoading(true);
+
     setTimeout(() => {
       toast("Your message sent successfully");
       setLoading(false);
     }, 1000);
   };
+
   const formik = useFormik({
     initialValues,
     validationSchema,
     onSubmit,
   });
+
   return (
     <>
       <h3>Send Message</h3>
@@ -76,4 +83,5 @@ const ContactForm = () => {
     </>
   );
 };
+
 export default ContactForm;

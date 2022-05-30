@@ -7,18 +7,22 @@ import CustomRoutes from "./router/custom-routes";
 import { useStore } from "./store";
 import { loginSuccess } from "./store/user/userActions";
 import { setVehicles } from "./store/vehicle/vehicleActions";
+
 const App = () => {
   const [loading, setLoading] = useState(true);
   const {dispatchUser, dispatchVehicle} = useStore();
+
   const loadData = async () =>  { 
     try {
       let resp = await getVehicles();
       dispatchVehicle(setVehicles(resp.data));
+
       const token = localStorage.getItem("token");
       if(token){
         resp = await getUser();
         dispatchUser(loginSuccess(resp.data));
       }
+
       setLoading(false);
       
     } catch (err) {
@@ -26,10 +30,12 @@ const App = () => {
       setLoading(false);
     }
   }
+
   useEffect(() => {
     loadData();
   }, []);
   
+
   if(loading) 
     return(<LoadingPage/>)
   else
@@ -40,4 +46,5 @@ const App = () => {
     </>
   );
 }
+
 export default App;

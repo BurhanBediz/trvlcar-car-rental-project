@@ -38,8 +38,8 @@ const ProfileForm = ({user}) => {
 
     try {
       await updateProfile(values);
+      
       toast("Your profile updated successfully");
-      window.location.reload();
       setLoading(false);
 
     } catch (err) {

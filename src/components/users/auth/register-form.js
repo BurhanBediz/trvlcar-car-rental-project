@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form, Spinner} from "react-bootstrap";
+import { Button, Form, Spinner } from "react-bootstrap";
 import Spacer from "../common/spacer/spacer";
 import * as Yup from "yup";
 import MaskedInput from "react-maskedinput";
@@ -26,11 +26,12 @@ const RegisterForm = ({setDefaultTab}) => {
     firstName: Yup.string().required("Please enter your first name"),
     lastName: Yup.string().required("Please enter your last name"),
     phoneNumber: Yup.string()
-      .required("Please enter your phone number")
+      .required()
       .test(
         "includes_",
         "Please enter your phone number",
-        (value) => value && !value.includes("_")),
+        (value) => value && !value.includes("_")
+      ),
     address: Yup.string().required("Please enter your address"),
     zipCode: Yup.string().required("Please enter your zip code"),
     email: Yup.string().email().required("Please enter your email"),
@@ -39,9 +40,9 @@ const RegisterForm = ({setDefaultTab}) => {
       .min(8, "Must be at least 8 characters")
       .matches(/[a-z]+/, "One lowercase character")
       .matches(/[A-Z]+/, "One uppercase character")
-      .matches(/[@$!%*#?&.]+/, "One special character")
+      .matches(/[@$!%*#?&]+/, "One special character")
       .matches(/\d+/, "One number"),
-      confirmPassword: Yup.string()
+    confirmPassword: Yup.string()
       .required("Please re-enter your password")
       .oneOf([Yup.ref("password")], "Password fields doesn't match"),
   });
@@ -50,7 +51,7 @@ const RegisterForm = ({setDefaultTab}) => {
     setLoading(true);
 
     try {
-      await register(values);
+      const resp = await register(values);
       toast("You are registered successfully");
       setLoading(false);
       formik.resetForm();
@@ -150,18 +151,17 @@ const RegisterForm = ({setDefaultTab}) => {
       </Form.Group>
       <Form.Group className="mb-3">
         <Form.Label>Password</Form.Label>
-        <PasswordInput
-          {...formik.getFieldProps("password")}
+        <PasswordInput {...formik.getFieldProps("password")}
           isInvalid={formik.touched.password && formik.errors.password}
           isValid={formik.touched.password && !formik.errors.password}
           error={formik.errors.password}/>
       </Form.Group>
       <Form.Group className="mb-3">
         <Form.Label>Password Confirm</Form.Label>
-          <PasswordInput  {...formik.getFieldProps("confirmPassword")}
+        <PasswordInput {...formik.getFieldProps("confirmPassword")}
           isInvalid={formik.touched.confirmPassword && formik.errors.confirmPassword}
           isValid={formik.touched.confirmPassword && !formik.errors.confirmPassword}
-          error= {formik.errors.confirmPassword}/>
+          error={formik.errors.confirmPassword}/>
       </Form.Group>
       <Button variant="primary" type="submit" disabled={loading}>
         {loading && <Spinner animation="border" size="sm" />} Register

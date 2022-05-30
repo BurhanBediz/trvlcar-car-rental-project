@@ -1,12 +1,12 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
+import { Pagination } from "swiper";
+import testimonals from "./testimonals.json";
 import "./testimonals.css";
-import testimonals from './testimonals.json'
+import "swiper/css";
+import "swiper/css/pagination";
 import Testimonal from "./testimonal";
-import { Pagination } from 'swiper';
-import 'swiper/css/pagination';
 import Counters from "./counters";
 
 const Testimonals = () => {
@@ -15,23 +15,22 @@ const Testimonals = () => {
       <Container>
         <Row>
           <Col md={6}>
-              <h3>Testimonals</h3>
-            <Swiper modules={[Pagination]}
+            <h3>Testimonals</h3>
+            <Swiper
+              modules={[Pagination]}
               spaceBetween={50}
               slidesPerView={1}
               pagination={{ clickable: true }}
             >
-                {
-                    testimonals.map((testimonal,index)=>
-                    (<SwiperSlide key={index}><Testimonal {...testimonal}/></SwiperSlide>)
-                    )
-                }
-              
-             
+              {testimonals.map((testimonal, index) => (
+                <SwiperSlide key={index}>
+                  <Testimonal {...testimonal} />
+                </SwiperSlide>
+              ))}
             </Swiper>
           </Col>
           <Col md={6}>
-              <Counters/>
+            <Counters/>
           </Col>
         </Row>
       </Container>

@@ -1,6 +1,9 @@
 import { types } from "../types";
 import { userInitialState } from "./userInitialState";
+
+
 export const userReducer = (state = userInitialState, action) =>{
+
     if(action.type === types.LOGIN_SUCCESS){
         return {
             ...state,
@@ -8,6 +11,7 @@ export const userReducer = (state = userInitialState, action) =>{
             isUserLogin: true
         }
     }
+
     else if(action.type === types.LOGIN_FAILED){
         return {
             ...state,
@@ -15,11 +19,13 @@ export const userReducer = (state = userInitialState, action) =>{
             isUserLogin: false
         }
     }
+
     else if(action.type === types.LOGOUT){
         return {
             ...state,
             user: {},
-            isUserLogin: false,
+            isUserLogin: false
         }
     }
+
 }

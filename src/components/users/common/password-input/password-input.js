@@ -1,26 +1,25 @@
-import React,{ useState } from "react";
-import { BiShow, BiHide } from "react-icons/bi";
-import {InputGroup, Form} from 'react-bootstrap'
+import React, { useState } from "react";
+import { Form, InputGroup } from "react-bootstrap";
+import { BsEye, BsEyeSlash } from "react-icons/bs";
 
 const PasswordInput = (props) => {
-    const [isInputVisible, setIsInputVisible] = useState(false);
+  const [type, setType] = useState("password");
+
+  const handleType = () => {
+    setType(type === "password" ? "text" : "password");
+  };
+
   return (
     <InputGroup className="mb-3">
-      <Form.Control
-        type={isInputVisible ? "text" : "password"}
-       {...props}
-      />
-      <InputGroup.Text
-        id="basic-addon1"
-        onClick={() => setIsInputVisible(!isInputVisible)}
-      >
-        {isInputVisible ? (
-          <BiHide className="eyeHide" />
+      <Form.Control type={type} {...props} />
+
+      <InputGroup.Text id="basic-addon2">
+        {type === "password" ? (
+          <BsEye onClick={handleType} />
         ) : (
-          <BiShow className="eyeView" />
+          <BsEyeSlash onClick={handleType} />
         )}
       </InputGroup.Text>
-
       <Form.Control.Feedback type="invalid">
         {props.error}
       </Form.Control.Feedback>
