@@ -14,7 +14,7 @@ const Auth = () => {
   return (
     <Container fluid className="auth">
       <Row>
-        <Col md={7} style={defaultTab==="login" ? {height:"100vh"} : {height:"1000px"}}>
+        <Col md={7}>
           <img src={logo} alt="TRVLCar" />
           <div className="toolbar">
             <RiCloseCircleLine

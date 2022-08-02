@@ -4,7 +4,6 @@ import DataTable from "react-data-table-component";
 import { Button, ButtonGroup, Spinner } from "react-bootstrap";
 import fileDownload from "js-file-download";
 import { Link, useNavigate } from "react-router-dom";
-import './admin-users.css'
 
 const AdminUsers = () => {
   const [users, setUsers] = useState([]);
@@ -62,14 +61,12 @@ const AdminUsers = () => {
         paddingRight: "8px",
         backgroundColor: "gray",
         color: "white",
-        fontSize:"1.4rem"
       },
     },
     cells: {
       style: {
         paddingLeft: "8px", // override the cell padding for data cells
         paddingRight: "8px",
-        fontSize:"1.1rem"
       },
     },
   };
@@ -91,7 +88,7 @@ const AdminUsers = () => {
   };
 
   return (
-    <div style={{marginLeft:"1.5rem"}}>
+    <div>
       <ButtonGroup aria-label="Basic example">
         <Button variant="primary" as={Link} to="/admin/users/new">New User</Button>
         <Button
@@ -104,7 +101,7 @@ const AdminUsers = () => {
         </Button>
       </ButtonGroup>
 
-      <DataTable 
+      <DataTable
         title="Users"
         columns={columns}
         data={users}

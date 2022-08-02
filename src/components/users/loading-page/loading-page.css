@@ -1,0 +1,16 @@
+.loading-page{
+    display : flex;
+    justify-content:center;
+    align-items:center;
+    width:100vw;
+    height:100vh;
+    position:relative;
+    background-color: var(--color2);
+}
+.loading-page .spinner{
+    position:absolute;
+    width:18rem;
+    height:18rem;
+    color:var(--color1);
+
+}
